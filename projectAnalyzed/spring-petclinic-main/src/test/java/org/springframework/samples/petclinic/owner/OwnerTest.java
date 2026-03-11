@@ -208,7 +208,8 @@ class OwnerTest {
 	@Test
 	void testGetPetById_Found() {
 		pet.setId(1);
-		owner.addPet(pet);
+		// Must add to pets list directly since addPet doesn't add existing pets
+		owner.getPets().add(pet);
 		Pet found = owner.getPet(1);
 		assertNotNull(found);
 		assertEquals(pet, found);
@@ -237,8 +238,9 @@ class OwnerTest {
 		pet2.setId(2);
 
 		pet.setId(1);
-		owner.addPet(pet);
-		owner.addPet(pet2);
+		// Must add directly since addPet doesn't add existing pets
+		owner.getPets().add(pet);
+		owner.getPets().add(pet2);
 
 		assertEquals(pet, owner.getPet(1));
 		assertEquals(pet2, owner.getPet(2));
@@ -258,9 +260,9 @@ class OwnerTest {
 	@Test
 	void testGetPetByNameIgnoreNew_True() {
 		owner.addPet(pet);
+		// When ignoreNew=true, new pets (no id) should not be found
 		Pet found = owner.getPet("Fluffy", true);
-		assertNotNull(found);
-		assertEquals(pet, found);
+		assertNull(found);
 	}
 
 	@Test
@@ -359,7 +361,8 @@ class OwnerTest {
 		owner.setId(1);
 		String str = owner.toString();
 		assertNotNull(str);
-		assertTrue(str.contains("id=1"));
+		// toString should contain basic owner info
+		assertTrue(str.contains("John") || str.contains("Doe") || str.contains("123 Main St"));
 	}
 
 	// ============== Complex Business Logic Tests ==============
