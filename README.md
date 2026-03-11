@@ -132,7 +132,7 @@ Q5: repository interfaces remain 0% line coverage
 
 ---
 
-## 2. Reflection Report (concise)
+## 2. Reflection Report 
 
 ### 2.1 Introduction
 
@@ -181,7 +181,7 @@ What AI helped with vs what required manual insight:
 
 ## 4. Submission Structure
 
-```text
+```
 final_project_se333_christopher_sanchez/
 |-- projectAnalyzed/
 |-- CodeBase/
