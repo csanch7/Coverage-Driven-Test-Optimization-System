@@ -179,38 +179,6 @@ What AI helped with vs what required manual insight:
 1. Helpful: rapid test scaffolding, branch case generation, command sequencing.
 2. Manual insight: choosing high-value assertions, validating domain semantics, deciding practical stopping points.
 
----
-
-## 3. Presentation Requirement (10-15 min)
-
-### Synchronous option
-- Live presentation during the final class session.
-
-### Asynchronous option
-- Submit a recorded video demonstration (10-15 minutes), no live attendance required.
-
-### Recommended demo flow
-
-1. Project Overview and Objectives
-- Goal, motivation, technical stack, and project scope.
-
-2. Demonstration
-- End-to-end MCP workflow: input -> processing -> output.
-- Show prompts and tester workflow decisions.
-- Explain design decisions and trade-offs.
-
-3. Metric Improvement Showcase
-- Show before vs after coverage (JaCoCo and/or additional metrics).
-- Explain which test additions drove measurable gains.
-- Highlight unexpected findings and limitations.
-
-4. Reflection and Insights
-- Discuss technical/debugging challenges.
-- Explain where AI was useful and where manual judgment was required.
-- Share future enhancement ideas and the most innovative project element.
-
----
-
 ## 4. Submission Structure
 
 ```text
