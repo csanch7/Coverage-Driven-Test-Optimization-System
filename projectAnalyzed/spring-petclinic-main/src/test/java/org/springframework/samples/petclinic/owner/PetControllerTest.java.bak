@@ -1,0 +1,59 @@
+package org.springframework.samples.petclinic.owner;
+
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.when;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
+
+import java.util.Optional;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.test.web.servlet.MockMvc;
+
+@WebMvcTest(PetController.class)
+class PetControllerTest {
+
+	@Autowired
+	private MockMvc mockMvc;
+
+	@MockBean
+	private OwnerRepository owners;
+
+	@MockBean
+	private PetTypeRepository types;
+
+	@Test
+	void initCreationFormShowsForm() throws Exception {
+		Owner owner = new Owner();
+		owner.setId(1);
+		when(owners.findById(1)).thenReturn(Optional.of(owner));
+		mockMvc.perform(get("/owners/1/pets/new"))
+			.andExpect(status().isOk())
+			.andExpect(view().name("pets/createOrUpdatePetForm"));
+	}
+
+	@Test
+	void processCreationFormSavesAndRedirects() throws Exception {
+		Owner owner = new Owner();
+		owner.setId(1);
+		when(owners.findById(1)).thenReturn(Optional.of(owner));
+		when(types.findPetTypes()).thenReturn(java.util.Collections.emptyList());
+		mockMvc
+			.perform(post("/owners/1/pets/new").param("name", "Fluffy")
+				.param("birthDate", "2020-01-01")
+				.param("type", "dog"))
+			.andExpect(status().is3xxRedirection());
+	}
+
+	@Test
+	void showPetNotFound() throws Exception {
+		when(owners.findById(1)).thenReturn(Optional.of(new Owner()));
+		mockMvc.perform(get("/owners/1/pets/999/edit")).andExpect(status().is4xxClientError());
+	}
+
+}

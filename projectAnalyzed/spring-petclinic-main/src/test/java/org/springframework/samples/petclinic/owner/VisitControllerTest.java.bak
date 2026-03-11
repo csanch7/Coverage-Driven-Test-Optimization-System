@@ -1,0 +1,52 @@
+package org.springframework.samples.petclinic.owner;
+
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.when;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
+
+import java.util.Optional;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.test.web.servlet.MockMvc;
+
+@WebMvcTest(VisitController.class)
+class VisitControllerTest {
+
+	@Autowired
+	private MockMvc mockMvc;
+
+	@MockBean
+	private OwnerRepository owners;
+
+	@Test
+	void initNewVisitFormShowsForm() throws Exception {
+		Owner owner = new Owner();
+		owner.setId(1);
+		Pet pet = new Pet();
+		pet.setId(2);
+		owner.addPet(pet);
+		when(owners.findById(1)).thenReturn(Optional.of(owner));
+		mockMvc.perform(get("/owners/1/pets/2/visits/new"))
+			.andExpect(status().isOk())
+			.andExpect(view().name("pets/createOrUpdateVisitForm"));
+	}
+
+	@Test
+	void processNewVisitFormSavesAndRedirects() throws Exception {
+		Owner owner = new Owner();
+		owner.setId(1);
+		Pet pet = new Pet();
+		pet.setId(2);
+		owner.addPet(pet);
+		when(owners.findById(1)).thenReturn(Optional.of(owner));
+		mockMvc.perform(post("/owners/1/pets/2/visits/new").param("date", "2022-01-01").param("description", "Checkup"))
+			.andExpect(status().is3xxRedirection());
+	}
+
+}
