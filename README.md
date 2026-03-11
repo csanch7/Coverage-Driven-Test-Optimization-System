@@ -72,7 +72,7 @@ Prerequisites:
 Setup:
 
 ```bash
-git clone https://github.com/csanch7/final_project_se333_christopher_sanchez.git
+git clone https://github.com/csanch7/final_project_se333_christopher_sanchezv2.git
 cd final_project_se333_christopher_sanchez/projectAnalyzed/spring-petclinic-main
 ```
 
