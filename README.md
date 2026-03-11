@@ -208,3 +208,4 @@ Note: repository interfaces remain 0% line coverage in unit-focused analysis by 
 ---
 
 <img width="347" height="803" alt="Screenshot 2026-03-10 220328" src="https://github.com/user-attachments/assets/8a151d27-ed4d-4ac5-911f-6ea9e526f109" />
+(prompt: Run tester.prompt.md on spring-petclinic-main)
