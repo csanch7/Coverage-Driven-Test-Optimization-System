@@ -1,7 +1,7 @@
 from fastmcp import FastMCP
 import xml.etree.ElementTree as ET
 
-mcp = FastMCP("SE333 MCP Server 🚀")
+mcp = FastMCP("MCP Server 🚀")
 
 @mcp.tool
 def add(a: int, b: int) -> int:

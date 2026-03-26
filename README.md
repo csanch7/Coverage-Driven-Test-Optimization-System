@@ -10,7 +10,7 @@ Project Goal: improve automated test coverage for Spring Petclinic through itera
 
 ### 1.1 MCP Tool / API Documentation
 
-Core MCP Tool: se333-mcp-server/coverage_heatmap
+Core MCP Tool: mcp-server/coverage_heatmap
 
 Purpose:
 - Parse JaCoCo XML and return per-class line coverage to identify highest-value test gaps.
@@ -72,8 +72,8 @@ Prerequisites:
 Setup:
 
 ```bash
-git clone https://github.com/csanch7/final_project_se333_christopher_sanchezv2.git
-cd final_project_se333_christopher_sanchez/projectAnalyzed/spring-petclinic-main
+git clone https://github.com/csanch7/Coverage-Driven-Test-Optimization-System.git
+cd Coverage-Driven-Test-Optimization-System/projectAnalyzed/spring-petclinic-main
 ```
 
 Build and test:
@@ -178,18 +178,6 @@ Technical challenges and debugging insights:
 What AI helped with vs what required manual insight:
 1. Helpful: rapid test scaffolding, branch case generation, command sequencing.
 2. Manual insight: choosing high-value assertions, validating domain semantics, deciding practical stopping points.
-
-## 4. Submission Structure
-
-```
-final_project_se333_christopher_sanchez/
-|-- projectAnalyzed/
-|-- CodeBase/
-|-- .github/prompts/
-|-- README.md
-|-- report/
-|   `-- reflection.pdf
-```
 
 ---
 
