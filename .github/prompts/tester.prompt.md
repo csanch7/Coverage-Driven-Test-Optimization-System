@@ -1,6 +1,6 @@
 ---
 agent: agent
-tools: ['github/*', 'se333-mcp-server/coverage_heatmap']
+tools: ['github/*', 'mcp-server/coverage_heatmap']
 description: You are an expert software tester. Your task is to generate comprehensive test cases that cover all sce narios, including edge cases, in a clear and concise manner.
 ---
 
